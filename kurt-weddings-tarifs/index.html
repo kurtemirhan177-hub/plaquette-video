@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Kurt Weddings – Tarifs vidéo</title>
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:#f4f2ee;font-family:system-ui,sans-serif}
+main{display:flex;flex-direction:column;align-items:center;gap:clamp(10px,2vw,28px);padding:clamp(10px,2vw,28px) 0}
+.page{position:relative;width:min(100%,1400px);aspect-ratio:3508/2480;background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.08)}
+.page img{display:block;width:100%;height:100%}
+.hot{position:absolute;display:grid;place-items:center;border-radius:2px}
+.hot:focus-visible{outline:2px solid #96753a;outline-offset:3px}
+.vid{cursor:pointer}
+.play{width:clamp(20px,2.6vw,38px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(243,239,230,.6);background:rgba(0,0,0,.12);display:grid;place-items:center;opacity:.7;transition:opacity .25s,transform .25s,background .25s}
+.play svg{width:40%;fill:#f3efe6;margin-left:6%}
+.vid:hover .play,.vid:focus-visible .play{opacity:1;transform:scale(1.08);background:rgba(0,0,0,.3)}
+.box{position:fixed;inset:0;background:rgba(10,10,10,.88);display:none;place-items:center;z-index:9;padding:4vw}
+.box.on{display:grid}
+.box .in{position:relative;width:min(100%,1200px,calc((100vh - 8vw) * 16 / 9));aspect-ratio:16/9;background:#000}
+.box iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.close{position:fixed;top:14px;right:18px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:26px;line-height:1;cursor:pointer}
+.close:hover,.close:focus-visible{background:rgba(255,255,255,.3)}
+@media print{body{background:#fff}main{padding:0;gap:0}.page{width:100%;box-shadow:none;break-after:page}.play{display:none}}
+</style>
+</head>
+<body>
+<main>
+<section class="page"><img src="img/page-1.jpg" alt="Kurt Weddings – Guide des Tarifs, vidéo" width="3508" height="2480"></section>
+<section class="page"><img src="img/page-2.jpg" alt="Offre 1 – 1 800 €" width="3508" height="2480" loading="lazy"><a class="hot vid" style="left:54.105%;top:25.484%;width:28.791%;height:22.419%" href="https://vimeo.com/1248501979" data-id="1248501979" target="_blank" rel="noopener" aria-label="Voir la vidéo de l'Offre 1"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></a></section>
+<section class="page"><img src="img/page-3.jpg" alt="Offre 2 – 2 200 €" width="3508" height="2480" loading="lazy"><a class="hot vid" style="left:54.105%;top:26.492%;width:28.791%;height:22.419%" href="https://vimeo.com/1248502444" data-id="1248502444" target="_blank" rel="noopener" aria-label="Voir la vidéo de l'Offre 2"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></a></section>
+<section class="page"><img src="img/page-4.jpg" alt="Offre 3 – 3 000 €" width="3508" height="2480" loading="lazy"><a class="hot vid" style="left:54.105%;top:26.492%;width:28.791%;height:22.419%" href="https://vimeo.com/1248502961" data-id="1248502961" target="_blank" rel="noopener" aria-label="Voir la vidéo de l'Offre 3"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></a></section>
+<section class="page"><img src="img/page-5.jpg" alt="Contact Kurt Weddings" width="3508" height="2480" loading="lazy"><a class="hot" style="left:10.547%;top:56.129%;width:17.246%;height:4.758%" href="https://www.instagram.com/kurt_weddings/" target="_blank" rel="noopener" aria-label="Instagram @kurt_weddings"></a><a class="hot" style="left:10.547%;top:60.887%;width:17.246%;height:4.032%" href="tel:+33652925243" aria-label="Appeler le 06 52 92 52 43"></a></section>
+</main>
+<div class="box" role="dialog" aria-modal="true" aria-label="Vidéo Kurt Weddings"><button class="close" type="button" aria-label="Fermer">×</button><div class="in"></div></div>
+<script>
+const box=document.querySelector('.box'),inner=box.querySelector('.in');
+const close=()=>{box.classList.remove('on');inner.innerHTML=''};
+document.querySelectorAll('.vid').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();
+  inner.innerHTML='<iframe src="https://player.vimeo.com/video/'+a.dataset.id+'?autoplay=1&title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Vidéo Kurt Weddings"></iframe>';
+  box.classList.add('on'); box.querySelector('.close').focus();
+}));
+box.addEventListener('click',e=>{if(e.target===box||e.target.classList.contains('close'))close()});
+addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+</script>
+</body>
+</html>
